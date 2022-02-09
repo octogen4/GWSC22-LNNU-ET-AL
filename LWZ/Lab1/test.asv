@@ -3,54 +3,84 @@
 %% Plot the sin signal
 
 % Signal functions interface
-sigscollect=sigfuns;
+sfuns=sigfuns;
 
 % Set Signal parameters then Generate the signals
-f0=2; phi0=60; A = 10;
+
+f0=9; phi0=60; A = 10;
 maxFreq = f0; samplFreq = 20*maxFreq;
-sintimeVec=settimevec(samplFreq,0,1.0);
-sinsigVec = sigscollect.sinsig(sintimeVec,A,[f0,phi0]);
+timeVec=settimevec(samplFreq,0,1.0);
+sigVec = sfuns.sinsigf(timeVec,A,[f0,phi0]);
+sinSD = SignalData(maxFreq,samplFreq,timeVec,sigVec);
 
-f0=2; f1=4; phi0=60; A = 10;
+f0=2; f1=10; phi0=60; A = 10;
 maxFreq = f0+f1; samplFreq = 20*maxFreq;
-lctimeVec=settimevec(samplFreq,0,1.0);
-lcsigVec = sigscollect.lcsig(lctimeVec,A,[f0,f1,phi0]);
+timeVec=settimevec(samplFreq,0,1.0);
+sigVec = sfuns.lcsigf(timeVec,A,[f0,f1,phi0]);
+lcSD = SignalData(maxFreq,samplFreq,timeVec,sigVec);
 
+f0=15;  phi0=30;  t0=0.5; sigma=0.1;A = 10;
+maxFreq = f0; samplFreq = 20*maxFreq;
+timeVec=settimevec(samplFreq,0,1.0);
+sigVec = sfuns.singausigf(timeVec,A,[f0,phi0,t0,sigma]);
+singauSD = SignalData(maxFreq,samplFreq,timeVec,sigVec);
+
+f0=15; f1=10; phi0=30;  ta=0.3; sL=0.15; A = 10;
+maxt=max(ta-f0/2/f1,1-(ta-f0/2/f1));
+maxFreq = f0*(maxt-ta)+f1*(maxt-ta)^2; samplFreq = 20*maxFreq;
+timeVec=settimevec(samplFreq,0,1.0);
+sigVec = sfuns.singausigf(timeVec,A,[f0,phi0,t0,sigma]);
+singauSD = SignalData(maxFreq,samplFreq,timeVec,sigVec);
 %Plot the signals
-figure;
-plot(sintimeVec,sinsigVec,'Marker','.','MarkerSize',18);
-figure;
-plot(lctimeVec,lcsigVec,'Marker','.','MarkerSize',18);
+nfig=3;
+fig=figure;fig.Position=[60,250,400*nfig,250];
+subplot(1,nfig,1);
+plot(sinSD.timeVec,sinSD.sigVec,'Marker','.','MarkerSize',18);
+subplot(1,nfig,2);
+plot(lcSD.timeVec,lcSD.sigVec,'Marker','.','MarkerSize',18);
+subplot(1,nfig,3);
+plot(singauSD.timeVec,singauSD.sigVec,'Marker','.','MarkerSize',18);
 
-%Plot the periodogram
+%Plot the periodogram (Magnitude of FFT)
 %--------------
-%Length of data 
-dataLen = timeVec(end)-timeVec(1);
-%DFT sample corresponding to Nyquist frequency
-kNyq = floor(nSamples/2)+1;
-% Positive Fourier frequencies
-posFreq = (0:(kNyq-1))*(1/dataLen);
-% FFT of signal
-fftSig = fft(sigVec);
-% Discard negative frequencies
-fftSig = fftSig(1:kNyq);
 
 %Plot periodogram
-figure;
+nfig = 3;
+fig=figure;fig.Position=[60,150,400*nfig,250];
+
+[posFreq,fftSig] = getFFTofsig(sinSD.timeVec,sinSD.sigVec);
+subplot(1,nfig,1);
+plot(posFreq,abs(fftSig));
+
+[posFreq,fftSig] = getFFTofsig(lcSD.timeVec,lcSD.sigVec);
+subplot(1,nfig,2);
+plot(posFreq,abs(fftSig));
+
+[posFreq,fftSig] = getFFTofsig(singauSD.timeVec,singauSD.sigVec);
+subplot(1,nfig,3);
 plot(posFreq,abs(fftSig));
 
 %Plot a spectrogram
 %----------------
 winLen = 0.2;%sec
 ovrlp = 0.1;%sec
-%Convert to integer number of samples 
-winLenSmpls = floor(winLen*samplFreq);
-ovrlpSmpls = floor(ovrlp*samplFreq);
-[S,F,T]=spectrogram(sigVec,winLenSmpls,ovrlpSmpls,[],samplFreq);
+
+sigVec=sinSD.sigVec; samplFreq=sinSD.samplFreq;
+[S,F,T]=getspectrogram(sigVec,winLen,ovrlp,samplFreq);
 figure;
 imagesc(T,F,abs(S)); axis xy;
-xlabel('Time (sec)');
-ylabel('Frequency (Hz)');
+xlabel('Time (sec)');ylabel('Frequency (Hz)');
 
 
+sigVec=lcSD.sigVec; samplFreq=lcSD.samplFreq;
+[S,F,T]=getspectrogram(sigVec,winLen,ovrlp,samplFreq);
+figure;
+imagesc(T,F,abs(S)); axis xy;
+xlabel('Time (sec)');ylabel('Frequency (Hz)');
 
+
+sigVec=singauSD.sigVec; samplFreq=singauSD.samplFreq;
+[S,F,T]=getspectrogram(sigVec,winLen,ovrlp,samplFreq);
+figure;
+imagesc(T,F,abs(S)); axis xy;
+xlabel('Time (sec)');ylabel('Frequency (Hz)');
