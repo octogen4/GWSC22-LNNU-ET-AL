@@ -16,12 +16,17 @@ maxFreq = f0+f1; samplFreq = 20*maxFreq;
 lctimeVec=settimevec(samplFreq,0,1.0);
 lcsigVec = sigscollect.lcsig(lctimeVec,A,[f0,f1,phi0]);
 
+f0=5;  phi0=60;  t0=0.2; sigma=0.1;A = 10;
+maxFreq = f0; samplFreq = 20*maxFreq;
+singautimeVec=settimevec(samplFreq,0,1.0);
+singausigVec = sigscollect.singausig(singautimeVec,A,[f0,phi0,t0,sigma]);
 %Plot the signals
 figure;
 plot(sintimeVec,sinsigVec,'Marker','.','MarkerSize',18);
 figure;
 plot(lctimeVec,lcsigVec,'Marker','.','MarkerSize',18);
-
+figure;
+plot(singautimeVec,singausigVec,'Marker','.','MarkerSize',18);
 %Plot the periodogram
 %--------------
 %Length of data 
