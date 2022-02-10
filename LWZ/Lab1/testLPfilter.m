@@ -16,20 +16,33 @@ sigVec=sigVec1+sigVec2+sigVec3;
 
 filtOrder = 30;
 maxfq = 1000;
-%b=fir1(filtOrder,[0.1,0.9],'low');
-b = fir1(filtOrder,[80/512,120/512]);
+
+%b = fir1(filtOrder,120/512);
+b = fir1(filtOrder,[180/(samplFreq/2),220/(samplFreq/2)]);
+%b = fir1(filtOrder,280/(samplFreq/2),'high');
+
 %freqz(b,1,512);
 filtSig = fftfilt(b,sigVec);
 
 fig=figure;fig.Position=[60,50,1200,400];
- 
 subplot(3,1,1);
 plot(timeVec,sigVec,'Marker','.','MarkerSize',18);
-axis([1 1.2 -1 1]);
+axis([0.8 1.0 -1 1]);
 subplot(3,1,2);
 plot(timeVec,filtSig,'Marker','.','MarkerSize',18);
-axis([1 1.2 -1 1]);
+axis([0.8 1.0 -0.5 0.5]);
 subplot(3,1,3);
-plot(timeVec,sigVec1,'Marker','.','MarkerSize',18);
-axis([1 1.2 -1 1]);
+plot(timeVec,sigVec3,'Marker','.','MarkerSize',18);
+axis([0.8 1.0 -0.5 0.5]);
+
+fig=figure;fig.Position=[60,50,1200,600];
+[posFreq,fftSig] = getFFTofsig(timeVec,sigVec);
+subplot(1,2,1);
+plot(posFreq,abs(fftSig));
+
+[posFreq,fftSig] = getFFTofsig(timeVec,filtSig);
+subplot(1,2,2);
+plot(posFreq,abs(fftSig));
+
+
 
