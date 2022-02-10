@@ -7,25 +7,25 @@ sfuns=sigfuns;
 
 % Set Signal parameters then Generate the signals
 
-f0=9; phi0=60; A = 10;
+f0=9; phi0=pi/3; A = 10;
 maxFreq = f0; samplFreq = 20*maxFreq;
 timeVec=settimevec(samplFreq,0,1.0);
 sigVec = sfuns.sinsigf(timeVec,A,[f0,phi0]);
 sinSD = SignalData(maxFreq,samplFreq,timeVec,sigVec);
 
-f0=2; f1=10; phi0=60; A = 10;
+f0=2; f1=10; phi0=pi/3; A = 10;
 maxFreq = f0+f1; samplFreq = 20*maxFreq;
 timeVec=settimevec(samplFreq,0,1.0);
 sigVec = sfuns.lcsigf(timeVec,A,[f0,f1,phi0]);
 lcSD = SignalData(maxFreq,samplFreq,timeVec,sigVec);
 
-f0=15;  phi0=30;  t0=0.5; sigma=0.1;A = 10;
+f0=15;  phi0=pi/6;  t0=0.5; sigma=0.1;A = 10;
 maxFreq = f0; samplFreq = 20*maxFreq;
 timeVec=settimevec(samplFreq,0,1.0);
 sigVec = sfuns.singausigf(timeVec,A,[f0,phi0,t0,sigma]);
 singauSD = SignalData(maxFreq,samplFreq,timeVec,sigVec);
 
-f0=15; f1=20; phi0=30;  ta=0.3; sL=0.15; A = 10;
+f0=5; f1=10; phi0=pi/6;  ta=0.1; sL=0.6; A = 10;
 maxt=max(ta-f0/2/f1,1-(ta-f0/2/f1));
 maxFreq = f0*(maxt-ta)+f1*(maxt-ta)^2;
 samplFreq = 20*maxFreq;
