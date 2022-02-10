@@ -45,7 +45,7 @@ subplot(2,2,3);
 plot(singauSD.timeVec,singauSD.sigVec,'Marker','.','MarkerSize',18);
 subplot(2,2,4);
 plot(ltcSD.timeVec,ltcSD.sigVec,'Marker','.','MarkerSize',18);
-
+saveas(gcf,['f:\matlab_pro\GWSC22-Team1\LWZ\Lab1\','fig1','.png']);
 %Plot the periodogram (Magnitude of FFT)
 %--------------
 
@@ -68,7 +68,7 @@ plot(posFreq,abs(fftSig));
 [posFreq,fftSig] = getFFTofsig(ltcSD.timeVec,ltcSD.sigVec);
 subplot(2,2,4);
 plot(posFreq,abs(fftSig));
-
+saveas(gcf,['f:\matlab_pro\GWSC22-Team1\LWZ\Lab1\','fig2','.png']);
 %Plot a spectrogram
 %----------------
 winLen = 0.2;%sec
