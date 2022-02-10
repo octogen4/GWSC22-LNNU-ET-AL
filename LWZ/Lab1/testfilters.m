@@ -32,7 +32,7 @@ subplot(3,1,2);
 plot(timeVec,filtSig,'Marker','.','MarkerSize',18);
 axis([0.8 1.0 -0.5 0.5]);
 subplot(3,1,3);
-plot(timeVec,sigVec3,'Marker','.','MarkerSize',18);
+plot(timeVec,sigVec2,'Marker','.','MarkerSize',18);
 axis([0.8 1.0 -0.5 0.5]);
 
 fig=figure;fig.Position=[60,50,1200,600];
