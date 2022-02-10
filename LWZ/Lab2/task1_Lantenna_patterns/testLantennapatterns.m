@@ -5,7 +5,8 @@ phis = linspace(0,2*pi,60);
 [thetaV,phiV] = meshgrid(thetas,phis);
 
 X=sin(thetaV).*cos(phiV);
-Y=sin(thetaV).*sin(phiV);Z=cos(thetaV);
+Y=sin(thetaV).*sin(phiV);
+Z=cos(thetaV);
 
 
 fig=figure;fig.Position=[60,50,1100,400];
