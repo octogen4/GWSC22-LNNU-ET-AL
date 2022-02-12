@@ -1,4 +1,4 @@
-
+% Show the motion of the oritentation of LISA detector array
 % starting positions
 
 sp1_DF0=[1/sqrt(3)*cos(-2*pi/3),1/sqrt(3)*sin(-2*pi/3),0];
@@ -18,7 +18,7 @@ set(gca,'YAxisLocation','origin');
 title('Starting positions ');
 
 %------------------------------------------------------------------
-tlist=0:1:3600*24*365;
+tlist=0:3600*24:3600*24*365;
 
 
 figure;
