@@ -1,6 +1,6 @@
 function [pv1_SSB,pv2_SSB,pv3_SSB]=posvector(t)
 
-Omega=2*pi/(365*24*3600); % rad/s
+Omega=setdectorOmega(); % rad/s
 
 % Dector Frame (DF)
 % Three spacecraft positions as sp1, sp2, sp3

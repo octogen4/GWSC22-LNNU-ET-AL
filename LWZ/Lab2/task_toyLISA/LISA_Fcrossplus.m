@@ -16,7 +16,7 @@ ns=[nsx,nsy,nsz];
 
 % Wave frame base
 nz=[0 0 1];
-Omega=2*pi/(365*24*3600);
+Omega=setdectorOmega();
 nz= DFtoSSB(nz,Omega*t);
 xv=cross(nz,ns);
 yv=cross(xv,ns);
