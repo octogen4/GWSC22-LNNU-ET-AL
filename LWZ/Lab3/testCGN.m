@@ -13,15 +13,15 @@ plot(freqVec,psdVec);
 
 sqrtPSD = sqrt(psdVec);
 fltrOrdr = 50;
-b = fir2(fltrOrdr,freqVec/(sampFreq/2),sqrtPSD);
+b = fir2(fltrOrdr,freqVec/(samplFreq/2),sqrtPSD);
 
 inNoise = randn(1,nSamples); % input a WGN
-outNoise = sqrt(sampFreq)*fftfilt(b,inNoise);
+outNoise = sqrt(samplFreq)*fftfilt(b,inNoise);
 
 %%
 % Estimate the PSD
 % (Pwelch plots in dB (= 10*log10(x)); plot on a linear scale)
-[pxx,f]=pwelch(outNoise, 256,[],[],sampFreq);
+[pxx,f]=pwelch(outNoise, 256,[],[],samplFreq);
 figure;
 plot(f,pxx);
 xlabel('Frequency (Hz)');
