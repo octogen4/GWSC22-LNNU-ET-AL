@@ -6,7 +6,7 @@
 
 %%
 % Path to folder containing signal and noise generation codes
-%addpath f:/matlab_pro/GWSC-main/GWSC-main/SIGNALS
+addpath f:/matlab_pro/GWSC-main/GWSC-main/SIGNALS
 addpath f:/matlab_pro/GWSC-main/GWSC-main/NOISE
 
 %%
@@ -22,12 +22,12 @@ timeVec = (0:(nSamples-1))/sampFreq;
 
 %%
 % Generate the signal that is to be normalized
-a1=8;
-a2=14;
-a3=pi/6;
+a1=10;
+a2=3;
+a3=3;
 % Amplitude value does not matter as it will be changed in the normalization
 A = 1; 
-sigVec = lcsigf(timeVec,1,[a1,a2,a3]);
+sigVec = crcbgenqcsig(timeVec,1,[a1,a2,a3]);
 
 %%
 % We will use the noise PSD used in colGaussNoiseDemo.m but add a constant
@@ -99,29 +99,6 @@ hold on;
 plot(timeVec,sigVec);
 xlabel('Time (sec)');
 ylabel('Data');
-
-% periodogram
-figure;
-fftSig = fft(dataVec);% FFT of signal
-fftSig = fftSig(1:kNyq);% Discard negative frequencies
-plot(posFreq,abs(fftSig)); hold on;
-fftSig = fft(sigVec);% FFT of signal
-fftSig = fftSig(1:kNyq);% Discard negative frequencies
-plot(posFreq,abs(fftSig));
-
-% spectroram
-winLen = 0.05;%sec
-ovrlp = 0.03;%sec
-
-winLenSmpls = floor(winLen*sampFreq);
-ovrlpSmpls = floor(ovrlp*sampFreq);
-[S,F,T]=spectrogram(dataVec,winLenSmpls,ovrlpSmpls,[],sampFreq);
-figure;
-imagesc(T,F,abs(S)); axis xy;
-xlabel('Time (sec)');ylabel('Frequency (Hz)');
-
-
-
 
 
 

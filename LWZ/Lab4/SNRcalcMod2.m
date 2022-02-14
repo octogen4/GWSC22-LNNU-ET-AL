@@ -7,11 +7,12 @@
 %%
 % Path to folder containing signal and noise generation codes
 %addpath f:/matlab_pro/GWSC-main/GWSC-main/SIGNALS
-addpath f:/matlab_pro/GWSC-main/GWSC-main/NOISE
-
+%addpath f:/matlab_pro/GWSC-main/GWSC-main/NOISE
+addpath f:/matlab_pro/GWSC22-Team1/LWZ/Lab3
+addpath f:/matlab_pro/GWSC22-Team1/LWZ/Lab4/DETEST
 %%
 % This is the target SNR for the LR
-snr = 10;
+snr = 5;
 
 %%
 % Data generation parameters
@@ -42,10 +43,11 @@ noisePSD = @(f) (f>=100 & f<=300).*(f-100).*(300-f)/10000 + 1;
 dataLen = nSamples/sampFreq;
 kNyq = floor(nSamples/2)+1;
 posFreq = (0:(kNyq-1))*(1/dataLen);
-psdPosFreq = noisePSD(posFreq);
+%psdPosFreq = noisePSD(posFreq);
+psdPosFreq = itpLIGOpsd(posFreq);
 figure;
-plot(posFreq,psdPosFreq);
-axis([0,posFreq(end),0,max(psdPosFreq)]);
+semilogy(posFreq,psdPosFreq);
+%axis([0,posFreq(end),0,max(psdPosFreq)]);
 xlabel('Frequency (Hz)');
 ylabel('PSD ((data unit)^2/Hz)');
 
@@ -99,29 +101,6 @@ hold on;
 plot(timeVec,sigVec);
 xlabel('Time (sec)');
 ylabel('Data');
-
-% periodogram
-figure;
-fftSig = fft(dataVec);% FFT of signal
-fftSig = fftSig(1:kNyq);% Discard negative frequencies
-plot(posFreq,abs(fftSig)); hold on;
-fftSig = fft(sigVec);% FFT of signal
-fftSig = fftSig(1:kNyq);% Discard negative frequencies
-plot(posFreq,abs(fftSig));
-
-% spectroram
-winLen = 0.05;%sec
-ovrlp = 0.03;%sec
-
-winLenSmpls = floor(winLen*sampFreq);
-ovrlpSmpls = floor(ovrlp*sampFreq);
-[S,F,T]=spectrogram(dataVec,winLenSmpls,ovrlpSmpls,[],sampFreq);
-figure;
-imagesc(T,F,abs(S)); axis xy;
-xlabel('Time (sec)');ylabel('Frequency (Hz)');
-
-
-
 
 
 

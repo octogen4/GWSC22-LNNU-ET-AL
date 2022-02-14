@@ -4,13 +4,14 @@ theta=0.6;
 phi=0.4;
 Aplus=0.01;
 Across=0.005;
-om0=0.002*2*pi;
+om0=1/(3600*24*10)*2*pi;
 f0=om0/2/pi;
 
 sampleRate =20*f0;
 scyc=1/sampleRate;
-timeIntval =1/f0*20; % sec
-t=0:scyc:timeIntval;
+tottime = 24*3600*180; % sec
+%timeIntval =1/f0*20; % sec
+t=0:scyc:tottime;
 
 srcpVec=zeros(1,length(t)); % hplus, SSB
 srccVec=zeros(1,length(t)); % hcross, SSB
@@ -25,15 +26,15 @@ for i=1:length(sigVec)
 end
 
 figure;
-plot(t,srcpVec); hold on;
-plot(t,sigVec); hold on;
+plot(t,srcpVec/norm(srcpVec)); hold on;
+plot(t,sigVec/norm(sigVec)); hold on;
 
 %Plot periodogram
 fig=figure;fig.Position=[90,50,900,500];
 
-[posFreq,fftSig] = getFFTofsig(t,srcpVec);
+[posFreq,fftSig] = getFFTofsig(t,srcpVec/norm(srcpVec));
 plot(posFreq,abs(fftSig)); hold on;
 %[posFreq,fftSig] = getFFTofsig(t,srccVec);
 %plot(posFreq,abs(fftSig)); hold on;
-[posFreq,fftSig] = getFFTofsig(t,sigVec);
+[posFreq,fftSig] = getFFTofsig(t,sigVec/norm(sigVec));
 plot(posFreq,abs(fftSig)); hold on;

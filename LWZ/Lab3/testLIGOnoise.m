@@ -1,9 +1,11 @@
+addpath f:/matlab_pro/GWSC22-Team1/LWZ/Lab3
+
 y = load('iLIGOSensitivity.txt');
 y1=y(:,1);
 y2=y(:,2);
 figure;
 loglog(y1,y2);
-% y is sqrtSn*2
+% y is sqrtSn*sqrt(2)
 
 nSamples = 204800;
 sampFreq = 2048;
@@ -43,10 +45,14 @@ outNoise = sqrt(sampFreq)*fftfilt(b,inNoise);
 [pxx,f]=pwelch(outNoise, 512,[],[],sampFreq);
 outfreq =f;
 outPSD = pxx/2;
+outmat = [outfreq outPSD];
+
+save('f:/matlab_pro/GWSC22-Team1/LWZ/Lab3/iLIGOpsd.txt','outmat','-ascii');
+inputmat = load('iLIGOpsd.txt');
 
 figure;
 semilogy(freqVec,sqrtPSD.^2);hold on;
-semilogy(outfreq,outPSD);
+semilogy(inputmat(:,1),inputmat(:,2));
 xlabel('Frequency (Hz)');
 ylabel('PSD');
 
