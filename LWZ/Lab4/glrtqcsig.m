@@ -1,4 +1,4 @@
-function glrt=glrtqcsig(timeVec,dataVec,sampFreq,psdfun,TempCoefs)
+function glrt=glrtqcsig(dataVec,sampFreq,psdfun,TempCoefs)
 
 %% Calculate GLRT for Quadratic chirp signal 
 % Generalized Likelihood ratio test (GLRT) for a quadratic chirp when only
@@ -15,10 +15,9 @@ addpath f:/matlab_pro/GWSC22-Team1/LWZ/Lab4/DETEST
 
 %% Parameters for data realization
 % Number of samples and sampling frequency.
-%nSamples = 2048;
-nSamples = length(timeVec);
-%sampFreq = 1024;
-%timeVec = (0:(nSamples-1))/sampFreq;
+
+nSamples = length(dataVec);
+timeVec = (0:(nSamples-1))/sampFreq;
 
 %% Supply PSD values
 % This is the noise psd we will use.
@@ -32,17 +31,7 @@ psdPosFreq = psdfun(posFreq);
 %% Generate  data realization
 % Noise + SNR=10 signal. 
 a1=TempCoefs(1);a2=TempCoefs(2);a3=TempCoefs(3);
-%a1=9.5;
-%a2=2.8;
-%a3=3.2;
 A=10;
-%noiseVec = statgaussnoisegen(nSamples,[posFreq(:),psdPosFreq(:)],100,sampFreq);
-%sig4data = crcbgenqcsig(timeVec,A,[a1,a2,a3]);
-% Signal normalized to SNR=10
-%[sig4data,~]=normsig4psd(sig4data,sampFreq,psdPosFreq,10);
-%dataVec = noiseVec+sig4data;
-
-
 
 %% Compute GLRT
 %Generate the unit norm signal (i.e., template). Here, the value used for
@@ -50,12 +39,15 @@ A=10;
 %Note: the GLRT here is for the unknown amplitude case, that is all other
 %signal parameters are known
 sigVec = crcbgenqcsig(timeVec,A,[a1,a2,a3]);
+
 %We do not need the normalization factor, just the  template vector
 [templateVec,~] = normsig4psd(sigVec,sampFreq,psdPosFreq,1);
 % Calculate inner product of data with template
 llr = innerprodpsd(dataVec,templateVec,sampFreq,psdPosFreq);
+
 %GLRT is its square
-llr = llr^2;
-%disp(llr);
-glrt = llr;
+glrt = llr^2;
+
+
+
 

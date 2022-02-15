@@ -12,35 +12,14 @@ addpath f:/matlab_pro/GWSC22-Team1/LWZ/Lab4/DETEST
 %%
 % Read data from files
 y = load('data1.txt');
-
-
-%% Parameters for data realization
-% Number of samples and sampling frequency.
-nSamples = length(y);
-sampFreq = 1024;
-timeVec = (0:(nSamples-1))/sampFreq;
-
+dataVec=y';
+sampFreq=1024;
 %% Supply PSD values
 % This is the noise psd we will use.
 noisePSD = @(f) (f>=100 & f<=300).*(f-100).*(300-f)/10000 + 1;
-dataLen = nSamples/sampFreq;
-kNyq = floor(nSamples/2)+1;
-posFreq = (0:(kNyq-1))*(1/dataLen);
-psdPosFreq = noisePSD(posFreq);
 
-%% Generate  data realization
-% Noise + SNR=10 signal. 
-a1=9.5;
-a2=2.8;
-a3=3.2;
-A=10;
-noiseVec = statgaussnoisegen(nSamples,[posFreq(:),psdPosFreq(:)],100,sampFreq);
-sig4data = crcbgenqcsig(timeVec,A,[a1,a2,a3]);
-% Signal normalized to SNR=10
-[sig4data,~]=normsig4psd(sig4data,sampFreq,psdPosFreq,10);
-dataVec = noiseVec+sig4data;
-
-
+%% Generate  data realization 
+a1=10;a2=2;a3=3;
 
 %% Compute GLRT
 %Generate the unit norm signal (i.e., template). Here, the value used for
@@ -55,8 +34,17 @@ dataVec = noiseVec+sig4data;
 %GLRT is its square
 %llr = llr^2;
 
-llr = glrtqcsig(timeVec,dataVec,sampFreq,noisePSD,[a1, a2, a3]);
+llr = glrtqcsig(dataVec,sampFreq,noisePSD,[a1, a2, a3]);
 
 disp(llr);
+figure;
+plot(timeVec,dataVec); hold on;
+plot(timeVec,templateVec);
+
+figure;
+[S,F,T] = spectrogram(dataVec,64,60,[],sampFreq);
+imagesc(T,F,abs(S)); axis xy;
+xlabel('Time (sec)')
+ylabel('Frequency (Hz)');
 
 
