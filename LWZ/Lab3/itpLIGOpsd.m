@@ -1,4 +1,4 @@
-function npsd=itpLIGOnoise(freqVec)
+function npsd=itpLIGOpsd(freqVec)
 
 y = load('iLIGOSensitivity.txt');
 y1=y(:,1);
