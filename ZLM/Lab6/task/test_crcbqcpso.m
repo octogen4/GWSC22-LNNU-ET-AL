@@ -1,6 +1,4 @@
 %% Minimize the fitness function CRCBQCFITFUNC using PSO
-addpath f:/matlab_pro/GWSC22-Team1/LWZ/Lab4/DETEST
-addpath f:/matlab_pro/GWSC22-Team1/LWZ/Lab4
 % Data length
 nSamples = 512;
 % Sampling frequency
@@ -8,13 +6,13 @@ Fs = 512;
 % Signal to noise ratio of the true signal
 snr = 10;
 % Phase coefficients parameters of the true signal
-a1 = 25;
+a1 = 10;
 a2 = 3;
-a3 = 4;
+a3 = 3;
 
 % Search range of phase coefficients
 rmin = [1, 1, 1];
-rmax = [180, 10, 10];
+rmax = [15, 5, 5];
 
 % Number of independent PSO runs
 nRuns = 8;
@@ -25,25 +23,19 @@ dataX = (0:(nSamples-1))/Fs;
 % otherwise comment this line out
 rng('default');
 % Generate data realization
-[dataY, sig] = crcbgenqcdata_colpsd(dataX,snr,[a1,a2,a3]);
-noisePSD = @(f) (f>=50 & f<=100).*(f-50).*(100-f)/625+1;
-
-%figure;
-%plot(dataX,dataY); hold on;
-%plot(dataX,sig);
+[dataY, sig] = crcbgenqcdata(dataX,snr,[a1,a2,a3]);
 
 % Input parameters for CRCBQCHRPPSO
 inParams = struct('dataX', dataX,...
                   'dataY', dataY,...
                   'dataXSq',dataX.^2,...
                   'dataXCb',dataX.^3,...
-                  'psdfun', noisePSD,...
                   'rmin',rmin,...
                   'rmax',rmax);
 % CRCBQCHRPPSO runs PSO on the CRCBQCHRPFITFUNC fitness function. As an
 % illustration of usage, we change one of the PSO parameters from its
 % default value.
-outStruct = crcbqcpso_colpsd(inParams,struct('maxSteps',1000),nRuns);
+outStruct = crcbqcpso(inParams,struct('maxSteps',2000),nRuns);
 
 %%
 % Plots
