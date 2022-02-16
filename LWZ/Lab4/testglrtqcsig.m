@@ -14,6 +14,7 @@ addpath f:/matlab_pro/GWSC22-Team1/LWZ/Lab4/DETEST
 y = load('data1.txt');
 dataVec=y';
 sampFreq=1024;
+
 %% Supply PSD values
 % This is the noise psd we will use.
 noisePSD = @(f) (f>=100 & f<=300).*(f-100).*(300-f)/10000 + 1;
@@ -37,14 +38,6 @@ a1=10;a2=2;a3=3;
 llr = glrtqcsig(dataVec,sampFreq,noisePSD,[a1, a2, a3]);
 
 disp(llr);
-figure;
-plot(timeVec,dataVec); hold on;
-plot(timeVec,templateVec);
 
-figure;
-[S,F,T] = spectrogram(dataVec,64,60,[],sampFreq);
-imagesc(T,F,abs(S)); axis xy;
-xlabel('Time (sec)')
-ylabel('Frequency (Hz)');
 
 

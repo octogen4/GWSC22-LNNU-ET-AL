@@ -31,7 +31,7 @@ psdPosFreq = noisePSD(posFreq);
 
 val1=0;
 val2=0; % significance=val1/val2
-trialTime =2000;
+trialTime =6000;
 for i=1:trialTime
     val2=val2+1;
     h0dataVec = statgaussnoisegen(nSamples,[posFreq(:),psdPosFreq(:)],100,sampFreq);
