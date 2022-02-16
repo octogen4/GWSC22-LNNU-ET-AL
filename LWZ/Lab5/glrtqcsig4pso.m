@@ -1,4 +1,4 @@
-function [fitVal,varargout,sigseries] = glrtqcsig4pso(xVec,params)
+function [fitVal,varargout] = glrtqcsig4pso(xVec,params)
 %Fitness function for quadratic chirp regression
 %F = GLRTQCSIG4PSO(X,P)
 %Compute the fitness function ( LogLike ratio for colored noise maximized
