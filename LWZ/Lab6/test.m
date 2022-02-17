@@ -1,9 +1,12 @@
 addpath f:/matlab_pro/GWSC22-Team1/LWZ/Lab6;
 addpath f:/matlab_pro/GWSC22-Team1/LWZ/Lab5;
+addpath f:/matlab_pro/GWSC22-Team1/LWZ/Lab4;
 
 % load data
-    load('TrainingData.mat');
-    load('analysisData.mat');
+    %load('TrainingData.mat');
+    %load('analysisData.mat');
+    load('TrainingDataTF.mat');
+    load('AnalysisDataTF.mat');
 %noise psd calculate
     [pxx,f]=pwelch(trainData,sampFreq/2,[],[],sampFreq);%get psd of noise
     %soomth psd of noise
@@ -43,6 +46,24 @@ inParams = struct('dataX', dataX,...
 % illustration of usage, we change one of the PSO parameters from its
 % default value.
 outStruct = crcbqcpso_colpsd(inParams,struct('maxSteps',2000),nRuns);
+
+%%
+outy=dataY;
+outs=outStruct.bestSig;
+%outn=outy-outs;
+figure;
+plot(dataX,outy); hold on;
+plot(dataX,outs);
+
+nSamples = length(dataX);
+dataLen = nSamples/sampFreq;
+kNyq = floor(nSamples/2)+1;
+posFreq = (0:(kNyq-1))*(1/dataLen);
+psdPosFreq=interp1(f,pxxsmth,posFreq);
+outSNR=sqrt(innerprodpsd(outs,outs,sampFreq,psdPosFreq));
+
+disp('SNR:');
+disp(outSNR);
 
 %%
 % Plots
