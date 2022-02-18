@@ -11,7 +11,7 @@ Wenzhong Liu (leader); JiaNan Chi; Jinyu Li; Lu Yin; Aojia Xu; Guodong Cheng; Yu
 
 Our results of Lab1-Lab6 are in ./LWZ, Lab6 is also done seperately in ./ZLM
 
-[./report]（https://github.com/octogen4/GWSC22-LNNU-ET-AL/tree/master/report） contains the report slides and some results of Lab2 (gif figures)
+[./report](https://github.com/octogen4/GWSC22-LNNU-ET-AL/tree/master/report) contains the report slides and some results of Lab2 (gif figures)
 
 ## Codes of the Labs
 
