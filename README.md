@@ -35,12 +35,14 @@ testfilters.m
 Codes in the 3 dirs does:
 >task1_Lantenna_patterns   
   >>Plot the antenna pattern of a given form
+  
 >task2_L_AP_with_tenser    
   >>Calculate the pattern functioins for the L-shaped ground base detector with tensors, considering burst and inspiral cases.
+
 >task_toyLISA              
   >>Antenna pattern functions, response signals for LISA toy model
 
-    Results shown in gif. figures are stored in report/fig/gif
+    Results shown in gif. figures are stored in [report/fig/gif](https://github.com/octogen4/GWSC22-LNNU-ET-AL/tree/master/report/fig/gif)
     
 ### Lab3
 
@@ -53,15 +55,43 @@ testLIGOnoise.m
 ### Lab4
 
 testglrtqcsig.m 
->Clculate GLRT of the data
+>Clculate GLRT of the data, noise PSD is a special form.
 
 testsignificance.m
 >Clculate significane of the data for a given signal template. We find that for all three data the significance are quite large (up to 0.8), meaning that the existance or the signal is highly unimpossible.
 
 ### Lab5
-GLRT test for data with quadratic chirp signal applying PSO algorithm.
+GLRT test for data with a quadratic chirp (QC) signal applying PSO algorithm. (With an arbitarily chosen PSD)
+
 llrqc.m
->
+> GLRT for QC template, with the method in Lab4
+
+testllrqc.m
+> Test llrqc to make sure it works well.
+
+glrtqcsig4pso.m
+> Where llrqc is adapted for PSO
+
+crcbqcpso_colpsd.m
+> Upload parameters to PSO, and get results.
+
+crcbqcsig_colpsd.m
+> Generate the QC signal, we only removed the input variable A since it is not needed.
+
+crcbgenqcdata_colpas.m
+> Generate data with colored PSD. We use it as a input to the PSO.
+
+
+test_crcbqcpso_colpsd.m
+> Run PSO, some reusults are shown in [./report](https://github.com/octogen4/GWSC22-LNNU-ET-AL/tree/master/report)
+
 
 ### Lab6
+test.m
+> Do the MDC job with codes of Lab5. We estimated the correct values of [a1,a2,a3] successfully.
+
+## References
+
+Thank Professor [Soumya D. Mohanty](https://github.com/mohanty-sd/) for this wonderful course.
+Original GWSC codes link https://github.com/mohanty-sd/GWSC
 
