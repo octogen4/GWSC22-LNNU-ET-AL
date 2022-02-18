@@ -7,7 +7,7 @@ Wenzhong Liu (leader); JiaNan Chi; Jinyu Li; Lu Yin; Aojia Xu; Guodong Cheng; Yu
 
 ## Contents
 
-./CJN Uploaded a complete copy of Soumya D. Mohanty's GWSC, see https://github.com/mohanty-sd/
+./CJN Uploaded a complete copy of Soumya D. Mohanty's [GWSC](https://github.com/mohanty-sd/GWSC)
 
 Our results of Lab1-Lab6 are in ./LWZ, Lab6 is also done seperately in ./ZLM
 
