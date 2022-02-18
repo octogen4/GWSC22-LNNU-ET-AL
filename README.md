@@ -93,5 +93,5 @@ test.m
 ## References
 
 Thank Professor [Soumya D. Mohanty](https://github.com/mohanty-sd/) for this wonderful course.
-Original GWSC codes link https://github.com/mohanty-sd/GWSC
+Link to original GWSC codes  https://github.com/mohanty-sd/GWSC
 
