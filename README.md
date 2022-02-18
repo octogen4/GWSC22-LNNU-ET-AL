@@ -58,7 +58,7 @@ testglrtqcsig.m
 >Clculate GLRT of the data, noise PSD is a special form.
 
 testsignificance.m
->Clculate significane of the data for a given signal template. We find that for all three data the significance are quite large (up to 0.8), meaning that the existance or the signal is highly unimpossible.
+>Clculate significane of the data for a given signal template. We find that for all three data the significance are quite large (up to 0.8), meaning that the existance or the signal is highly impossible.
 
 ### Lab5
 GLRT test for data with a quadratic chirp (QC) signal applying PSO algorithm. (With an arbitarily chosen PSD)
