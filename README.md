@@ -9,20 +9,38 @@ Wenzhong Liu (leader); JiaNan Chi; Jinyu Li; Lu Yin; Aojia Xu; Guodong Cheng; Yu
 
 ./CJN Uploaded a complete copy of Soumya D. Mohanty's GWSC, see https://github.com/mohanty-sd/
 
-Our results of Lab1-Lab6 are shown in ./LWZ, Lab6 is also done seperately in ./ZLM
+Our results of Lab1-Lab6 are in ./LWZ, Lab6 is also done seperately in ./ZLM
 
-./Report contains the report slides and some results of Lab2 (gif figures)
+./report contains the report slides and some results of Lab2 (gif figures)
 
 ## Codes of the Labs
 
 
 ### Lab1
 
+test.m                      Processing the test signals, plot periodograms and spectrograms
+sigfuns.m                   Test signal functions , written in a function interface
+SigmaData.m                 Class to store the signal for processing
+
+testfilters.m               Exercises on filters
+
 ### Lab2
 
+Codes in the 3 dirs does: 
+  task1_Lantenna_patterns   Plot the antenna pattern of a given form
+  task2_L_AP_with_tenser    Calculate the pattern functioins for the L-shaped ground base detector with tensors, considering burst and inspiral cases.
+  task_toyLISA              Antenna pattern functions, response signals for LISA toy model
+
+    Results shown in gif. figures are stored in report/fig/gif
+    
 ### Lab3
 
+testData.m                  Exercise on data whitening, results are shown in /report/report_lwz.pdf
+testLIGOnoise.m             Generate colored noise with initial LIGO PSD
+
 ### Lab4
+
+
 
 ### Lab5
 
