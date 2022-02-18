@@ -11,18 +11,21 @@ Wenzhong Liu (leader); JiaNan Chi; Jinyu Li; Lu Yin; Aojia Xu; Guodong Cheng; Yu
 
 Our results of Lab1-Lab6 are in ./LWZ, Lab6 is also done seperately in ./ZLM
 
-./report contains the report slides and some results of Lab2 (gif figures)
+[./report]（https://github.com/octogen4/GWSC22-LNNU-ET-AL/tree/master/report） contains the report slides and some results of Lab2 (gif figures)
 
 ## Codes of the Labs
 
 
 ### Lab1
 
-test.m                      Processing the test signals, plot periodograms and spectrograms
-sigfuns.m                   Test signal functions , written in a function interface
-SigmaData.m                 Class to store the signal for processing
-
-testfilters.m               Exercises on filters
+test.m                      
+  Processing the test signals, plot periodograms and spectrograms
+sigfuns.m                   
+  Test signal functions , written in a function interface
+SigmaData.m                 
+  Class to store the signal for processing
+testfilters.m               
+  Exercises on filters
 
 ### Lab2
 
