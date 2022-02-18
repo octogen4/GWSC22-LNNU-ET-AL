@@ -22,33 +22,46 @@ test.m
   >Processing the test signals, plot periodograms and spectrograms
   
 sigfuns.m                   
-  Test signal functions , written in a function interface
+  >Test signal functions , written in a function interface
   
 SigmaData.m                 
-  Class to store the signal for processing
+  >Class to store the signal for processing
   
 testfilters.m               
-  Exercises on filters
+  >Exercises on filters
 
 ### Lab2
 
-Codes in the 3 dirs does: 
-  task1_Lantenna_patterns   Plot the antenna pattern of a given form
-  task2_L_AP_with_tenser    Calculate the pattern functioins for the L-shaped ground base detector with tensors, considering burst and inspiral cases.
-  task_toyLISA              Antenna pattern functions, response signals for LISA toy model
+Codes in the 3 dirs does:
+>task1_Lantenna_patterns   
+  >>Plot the antenna pattern of a given form
+>task2_L_AP_with_tenser    
+  >>Calculate the pattern functioins for the L-shaped ground base detector with tensors, considering burst and inspiral cases.
+>task_toyLISA              
+  >>Antenna pattern functions, response signals for LISA toy model
 
     Results shown in gif. figures are stored in report/fig/gif
     
 ### Lab3
 
-testData.m                  Exercise on data whitening, results are shown in /report/report_lwz.pdf
-testLIGOnoise.m             Generate colored noise with initial LIGO PSD
+testData.m                  
+>Exercise on data whitening, results are shown in /report/report_lwz.pdf
+
+testLIGOnoise.m             
+>Generate colored noise with initial LIGO PSD
 
 ### Lab4
 
+testglrtqcsig.m 
+>Clculate GLRT of the data
 
+testsignificance.m
+>Clculate significane of the data for a given signal template. We find that for all three data the significance are quite large (up to 0.8), meaning that the existance or the signal is highly unimpossible.
 
 ### Lab5
+GLRT test for data with quadratic chirp signal applying PSO algorithm.
+llrqc.m
+>
 
 ### Lab6
 
