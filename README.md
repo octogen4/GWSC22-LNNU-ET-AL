@@ -19,8 +19,7 @@ Our results of Lab1-Lab6 are in ./LWZ, Lab6 is also done seperately in ./ZLM
 ### Lab1
 
 test.m
-<div>
-  Processing the test signals, plot periodograms and spectrograms
+  >Processing the test signals, plot periodograms and spectrograms
   
 sigfuns.m                   
   Test signal functions , written in a function interface
