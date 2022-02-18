@@ -42,7 +42,7 @@ Codes in the 3 dirs does:
 >task_toyLISA              
   >>Antenna pattern functions, response signals for LISA toy model
 
-    Results shown in gif. figures are stored in [report/fig/gif](https://github.com/octogen4/GWSC22-LNNU-ET-AL/tree/master/report/fig/gif)
+Results shown in gif. figures are stored in [./report/fig/gif](https://github.com/octogen4/GWSC22-LNNU-ET-AL/tree/master/report/fig/gif)
     
 ### Lab3
 
