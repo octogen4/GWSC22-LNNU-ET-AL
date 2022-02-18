@@ -20,10 +20,13 @@ Our results of Lab1-Lab6 are in ./LWZ, Lab6 is also done seperately in ./ZLM
 
 test.m                      
   Processing the test signals, plot periodograms and spectrograms
+  
 sigfuns.m                   
   Test signal functions , written in a function interface
+  
 SigmaData.m                 
   Class to store the signal for processing
+  
 testfilters.m               
   Exercises on filters
 
