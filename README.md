@@ -9,7 +9,7 @@ Wenzhong Liu (leader); JiaNan Chi; Jinyu Li; Lu Yin; Aojia Xu; Guodong Cheng; Yu
 
 [./CJN](https://github.com/octogen4/GWSC22-LNNU-ET-AL/tree/master/CJN) Uploaded a complete copy of Soumya D. Mohanty's [GWSC](https://github.com/mohanty-sd/GWSC)
 
-Our results of Lab1-Lab6 are in [./LWZ](https://github.com/octogen4/GWSC22-LNNU-ET-AL/tree/master/LWZ), Lab6 is also done seperately in [./ZLM](https://github.com/octogen4/GWSC22-LNNU-ET-AL/tree/master/ZLM)
+Our codes of Lab1-Lab6 are in [./LWZ](https://github.com/octogen4/GWSC22-LNNU-ET-AL/tree/master/LWZ), Lab6 is also done seperately in [./ZLM](https://github.com/octogen4/GWSC22-LNNU-ET-AL/tree/master/ZLM)
 
 [./report](https://github.com/octogen4/GWSC22-LNNU-ET-AL/tree/master/report) contains the report slides and some results of Lab2 (gif figures)
 
